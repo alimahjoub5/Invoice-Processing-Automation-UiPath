@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SOZT1OB5Nzo=",
+  "dgSpecHash": "RP3G5L+yTuI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ali.mahjoub\\OneDrive - CGI\\Documents\\UiPath\\EnterpriseInvoiceAutomation\\.local\\",
+  "projectFilePath": "C:\\Users\\ali.mahjoub\\OneDrive - CGI\\Documents\\UiPath\\EnterpriseInvoiceAutomation\\Invoice-Processing-Automation-UiPath\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\ali.mahjoub\\.nuget\\packages\\azure.core\\1.18.0\\azure.core.1.18.0.nupkg.sha512",
     "C:\\Users\\ali.mahjoub\\.nuget\\packages\\bitmiracle.docotic.pdf\\9.8.19642-dev\\bitmiracle.docotic.pdf.9.8.19642-dev.nupkg.sha512",

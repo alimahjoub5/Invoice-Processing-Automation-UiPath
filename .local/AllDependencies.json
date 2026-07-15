@@ -20796,9 +20796,9 @@
     "restore": {
       "projectUniqueName": "EnterpriseInvoiceAutomation",
       "projectName": "EnterpriseInvoiceAutomation",
-      "projectPath": "C:\\Users\\ali.mahjoub\\OneDrive - CGI\\Documents\\UiPath\\EnterpriseInvoiceAutomation\\.local",
+      "projectPath": "C:\\Users\\ali.mahjoub\\OneDrive - CGI\\Documents\\UiPath\\EnterpriseInvoiceAutomation\\Invoice-Processing-Automation-UiPath\\.local",
       "packagesPath": "C:\\Users\\ali.mahjoub\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ali.mahjoub\\OneDrive - CGI\\Documents\\UiPath\\EnterpriseInvoiceAutomation\\.local",
+      "outputPath": "C:\\Users\\ali.mahjoub\\OneDrive - CGI\\Documents\\UiPath\\EnterpriseInvoiceAutomation\\Invoice-Processing-Automation-UiPath\\.local",
       "UsingMicrosoftNETSdk": false,
       "restoreAuditProperties": {
         "enableAudit": "False"

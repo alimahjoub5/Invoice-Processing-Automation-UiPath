@@ -33,6 +33,7 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Excel.Activities.Business</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -90,9 +91,10 @@
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="802.8000000000001,6791.2" sap2010:WorkflowViewState.IdRef="Sequence_Main">
+  <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="802.8000000000001,9225.6" sap2010:WorkflowViewState.IdRef="Sequence_Main">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="invoiceFiles" />
       <Variable x:TypeArguments="x:String" Name="invoiceNumber" />
@@ -119,7 +121,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Set CSV Path" sap:VirtualizedContainerService.HintSize="710.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetCsvPath">
+    <Assign DisplayName="Set CSV Path" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetCsvPath">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[csvPath]</OutArgument>
       </Assign.To>
@@ -127,7 +129,7 @@
         <InArgument x:TypeArguments="x:String">[Path.Combine("Output", "Invoices.csv")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Set Daily Report Path" sap:VirtualizedContainerService.HintSize="710.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetDailyReportPath">
+    <Assign DisplayName="Set Daily Report Path" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetDailyReportPath">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[dailyReportPath]</OutArgument>
       </Assign.To>
@@ -135,7 +137,7 @@
         <InArgument x:TypeArguments="x:String">[Path.Combine("Output", "DailyReport.xlsx")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Set Default Recipient Email" sap:VirtualizedContainerService.HintSize="710.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetDefaultRecipientEmail">
+    <Assign DisplayName="Set Default Recipient Email" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetDefaultRecipientEmail">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[recipientEmail]</OutArgument>
       </Assign.To>
@@ -143,7 +145,7 @@
         <InArgument x:TypeArguments="x:String">["alimahjoub047@gmail.com"]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Try Read Config Sheet" sap:VirtualizedContainerService.HintSize="710.4,785.6" sap2010:WorkflowViewState.IdRef="TryCatch_ReadConfigSheet">
+    <TryCatch DisplayName="Try Read Config Sheet" sap:VirtualizedContainerService.HintSize="704,785.6" sap2010:WorkflowViewState.IdRef="TryCatch_ReadConfigSheet">
       <TryCatch.Try>
         <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="449.6,277.6" sap2010:WorkflowViewState.IdRef="Sequence_TryReadConfig">
           <sap:WorkflowViewStateService.ViewState>
@@ -172,9 +174,9 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <If Condition="[dtConfig Is Nothing OrElse dtConfig.Rows.Count = 0]" DisplayName="If Config Sheet Empty" sap:VirtualizedContainerService.HintSize="710.4,330.4" sap2010:WorkflowViewState.IdRef="If_ConfigSheetEmpty">
+    <If Condition="[dtConfig Is Nothing OrElse dtConfig.Rows.Count = 0]" DisplayName="If Config Sheet Empty" sap:VirtualizedContainerService.HintSize="704,444.8" sap2010:WorkflowViewState.IdRef="If_ConfigSheetEmpty">
       <If.Then>
-        <ui:ReadRange AddHeaders="True" DataTable="[dtConfig]" DisplayName="Read Sheet1 Config" sap:VirtualizedContainerService.HintSize="449.6,80" sap2010:WorkflowViewState.IdRef="ReadRange_Sheet1Config" Range="[String.Empty]" SheetName="[&quot;Sheet1&quot;]" WorkbookPath="[&quot;Config.xlsx&quot;]" />
+        <ui:ReadRange AddHeaders="True" DataTable="[dtConfig]" DisplayName="Read Sheet1 Config" sap:VirtualizedContainerService.HintSize="449.6,194.4" sap2010:WorkflowViewState.IdRef="ReadRange_Sheet1Config" Range="[String.Empty]" SheetName="[&quot;Sheet1&quot;]" WorkbookPath="[&quot;Config.xlsx&quot;]" />
       </If.Then>
       <If.Else>
         <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
@@ -186,7 +188,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <Assign DisplayName="Resolve Recipient From KeyValue" sap:VirtualizedContainerService.HintSize="710.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_ResolveRecipientFromKeyValue">
+    <Assign DisplayName="Resolve Recipient From KeyValue" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="Assign_ResolveRecipientFromKeyValue">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[recipientEmail]</OutArgument>
       </Assign.To>
@@ -194,7 +196,7 @@
         <InArgument x:TypeArguments="x:String">[If(dtConfig IsNot Nothing AndAlso dtConfig.Columns.Contains("Key") AndAlso dtConfig.Columns.Contains("Value") AndAlso dtConfig.Select("Key = 'EmailTo'").Length &gt; 0, dtConfig.Select("Key = 'EmailTo'")(0)("Value").ToString.Trim, recipientEmail)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Resolve Recipient From Email Column" sap:VirtualizedContainerService.HintSize="710.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_ResolveRecipientFromEmailColumn">
+    <Assign DisplayName="Resolve Recipient From Email Column" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="Assign_ResolveRecipientFromEmailColumn">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[recipientEmail]</OutArgument>
       </Assign.To>
@@ -202,13 +204,13 @@
         <InArgument x:TypeArguments="x:String">[If(String.Equals(recipientEmail, "finance@company.com", StringComparison.OrdinalIgnoreCase) AndAlso dtConfig IsNot Nothing AndAlso dtConfig.Columns.Contains("Email") AndAlso dtConfig.Rows.Count &gt; 0 AndAlso Not String.IsNullOrWhiteSpace(dtConfig.Rows(0)("Email").ToString), dtConfig.Rows(0)("Email").ToString.Trim, recipientEmail)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:WriteTextFile File="{x:Null}" Output="{x:Null}" DisplayName="Initialize CSV Header" FileName="[csvPath]" sap:VirtualizedContainerService.HintSize="710.4,175.2" sap2010:WorkflowViewState.IdRef="WriteTextFile_InitCsv" Text="[&quot;InvoiceNumber,Supplier,InvoiceDate,Amount,VAT,Status,ProcessDate&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Get Files" sap:VirtualizedContainerService.HintSize="710.4,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_GetFiles" UnSafe="False" WorkflowFileName="GetFiles.xaml">
+    <ui:WriteTextFile File="{x:Null}" Output="{x:Null}" DisplayName="Initialize CSV Header" FileName="[csvPath]" sap:VirtualizedContainerService.HintSize="704,175.2" sap2010:WorkflowViewState.IdRef="WriteTextFile_InitCsv" Text="[&quot;InvoiceNumber,Supplier,InvoiceDate,Amount,VAT,Status,ProcessDate&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Get Files" sap:VirtualizedContainerService.HintSize="704,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_GetFiles" UnSafe="False" WorkflowFileName="GetFiles.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="s:String[]" x:Key="out_Files">[invoiceFiles]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Assign DisplayName="Set Total Processed Count" sap:VirtualizedContainerService.HintSize="710.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetTotalProcessedCount">
+    <Assign DisplayName="Set Total Processed Count" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetTotalProcessedCount">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[totalProcessedCount]</OutArgument>
       </Assign.To>
@@ -216,7 +218,7 @@
         <InArgument x:TypeArguments="x:Int32">[If(invoiceFiles Is Nothing, 0, invoiceFiles.Length)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Initialize Success Count" sap:VirtualizedContainerService.HintSize="710.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_InitSuccessCount">
+    <Assign DisplayName="Initialize Success Count" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="Assign_InitSuccessCount">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[successCount]</OutArgument>
       </Assign.To>
@@ -224,7 +226,7 @@
         <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Initialize Error Count" sap:VirtualizedContainerService.HintSize="710.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_InitErrorCount">
+    <Assign DisplayName="Initialize Error Count" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="Assign_InitErrorCount">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[errorCount]</OutArgument>
       </Assign.To>
@@ -232,189 +234,221 @@
         <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Invoice File" sap:VirtualizedContainerService.HintSize="710.4,4172" sap2010:WorkflowViewState.IdRef="ForEach_InvoiceFiles" Values="[invoiceFiles]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Invoice File" sap:VirtualizedContainerService.HintSize="704,5884" sap2010:WorkflowViewState.IdRef="ForEach_InvoiceFiles" Values="[invoiceFiles]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="currentFile" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Process Single Invoice" sap:VirtualizedContainerService.HintSize="676.8,4041.6" sap2010:WorkflowViewState.IdRef="Sequence_ProcessInvoice">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Set Processing Start" sap:VirtualizedContainerService.HintSize="643.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetProcessingStart">
-              <Assign.To>
-                <OutArgument x:TypeArguments="s:DateTime">[processingStart]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <ui:LogMessage DisplayName="Log Current File" sap:VirtualizedContainerService.HintSize="643.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_CurrentFile" Level="Info" Message="[&quot;Processing: &quot; + currentFile]" />
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Read Invoice" sap:VirtualizedContainerService.HintSize="643.2,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_ReadInvoice" UnSafe="False" WorkflowFileName="ReadInvoice.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[currentFile]</InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceNumber">[invoiceNumber]</OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_Supplier">[supplier]</OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceDate">[invoiceDate]</OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_Amount">[amount]</OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_VAT">[vat]</OutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-            </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Check Duplicate" sap:VirtualizedContainerService.HintSize="643.2,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_CheckDuplicate" UnSafe="False" WorkflowFileName="Workflows\CheckDuplicate.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[invoiceNumber]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[currentFile]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_ExcelPath">[Path.Combine("Output", "Invoices.xlsx")]</InArgument>
-                <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsDuplicate">[isDuplicate]</OutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-            </ui:InvokeWorkflowFile>
-            <If Condition="[Not isDuplicate]" DisplayName="If Not Duplicate" sap:VirtualizedContainerService.HintSize="643.2,1047.2" sap2010:WorkflowViewState.IdRef="If_NotDuplicate">
-              <If.Then>
-                <Sequence DisplayName="Process Non-Duplicate" sap:VirtualizedContainerService.HintSize="449.6,744" sap2010:WorkflowViewState.IdRef="Sequence_ProcessNonDuplicate">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Validate Invoice" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_Validate" UnSafe="False" WorkflowFileName="Validation.xaml">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[invoiceNumber]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_Supplier">[supplier]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceDate">[invoiceDate]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_Amount">[amount]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_VAT">[vat]</InArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                  </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Save Invoice" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_SaveInvoice" UnSafe="False" WorkflowFileName="Workflows\SaveInvoice.xaml">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[invoiceNumber]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_Supplier">[supplier]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceDate">[invoiceDate]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_Amount">[amount]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_VAT">[vat]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_Status">["Processed"]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_ExcelPath">[Path.Combine("Output", "Invoices.xlsx")]</InArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                  </ui:InvokeWorkflowFile>
-                  <Assign DisplayName="Build CSV Line" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_BuildCsvLine">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:String">[csvLine]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[String.Join(",", New String() {(ChrW(34) + If(invoiceNumber, String.Empty).Replace(ChrW(34), ChrW(34) + ChrW(34)) + ChrW(34)), (ChrW(34) + If(supplier, String.Empty).Replace(ChrW(34), ChrW(34) + ChrW(34)) + ChrW(34)), (ChrW(34) + If(invoiceDate, String.Empty).Replace(ChrW(34), ChrW(34) + ChrW(34)) + ChrW(34)), (ChrW(34) + If(amount, String.Empty).Replace(ChrW(34), ChrW(34) + ChrW(34)) + ChrW(34)), (ChrW(34) + If(vat, String.Empty).Replace(ChrW(34), ChrW(34) + ChrW(34)) + ChrW(34)), (ChrW(34) + "Validated" + ChrW(34)), (ChrW(34) + Now.ToString("yyyy-MM-dd HH:mm:ss") + ChrW(34))})]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <ui:AppendLine File="{x:Null}" DisplayName="Append CSV Line" Encoding="utf-8" FileName="[csvPath]" sap:VirtualizedContainerService.HintSize="416,157.6" sap2010:WorkflowViewState.IdRef="AppendLine_CsvLine" Text="[csvLine]" UseDefaultEncoding="False" />
-                  <Assign DisplayName="Increment Success Count" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_IncrementSuccessCount">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[successCount]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[successCount + 1]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence DisplayName="Handle Duplicate" sap:VirtualizedContainerService.HintSize="449.6,406.4" sap2010:WorkflowViewState.IdRef="Sequence_HandleDuplicate">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Duplicate Skipped" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_DuplicateSkipped" Level="Warn" Message="[&quot;Duplicate invoice skipped: &quot; + invoiceNumber]" />
-                  <Assign DisplayName="Increment Error Count" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_IncrementErrorCount">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[errorCount]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[errorCount + 1]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </If.Else>
-            </If>
-            <Assign DisplayName="Set Processing Time" sap:VirtualizedContainerService.HintSize="643.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetProcessingTime">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[processingTime]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[(Now - processingStart).ToString("hh\:mm\:ss")]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <If Condition="[File.Exists(dailyReportPath)]" DisplayName="If DailyReport Exists" sap:VirtualizedContainerService.HintSize="643.2,1395.2" sap2010:WorkflowViewState.IdRef="If_DailyReportExists">
-              <If.Then>
-                <ui:ReadRange AddHeaders="True" DataTable="[dtDailyReport]" DisplayName="Read Daily Report Sheet" sap:VirtualizedContainerService.HintSize="449.6,80" sap2010:WorkflowViewState.IdRef="ReadRange_DailyReport" Range="[String.Empty]" SheetName="[&quot;Report&quot;]" WorkbookPath="[dailyReportPath]" />
-              </If.Then>
-              <If.Else>
-                <Sequence DisplayName="Initialize Daily Report Table" sap:VirtualizedContainerService.HintSize="449.6,1097.6" sap2010:WorkflowViewState.IdRef="Sequence_InitDailyReportTable">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Create Daily Report DataTable" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_CreateDailyReportDataTable">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="sd:DataTable">[dtDailyReport]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="sd:DataTable">[New DataTable()]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <Assign DisplayName="Add Invoice Column" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddReportCol1">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="sd:DataColumn">[tmpReportColumn]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="sd:DataColumn">[dtDailyReport.Columns.Add("Invoice", GetType(String))]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <Assign DisplayName="Add Supplier Column" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddReportCol2">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="sd:DataColumn">[tmpReportColumn]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="sd:DataColumn">[dtDailyReport.Columns.Add("Supplier", GetType(String))]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <Assign DisplayName="Add Amount Column" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddReportCol3">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="sd:DataColumn">[tmpReportColumn]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="sd:DataColumn">[dtDailyReport.Columns.Add("Amount", GetType(String))]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <Assign DisplayName="Add Status Column" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddReportCol4">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="sd:DataColumn">[tmpReportColumn]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="sd:DataColumn">[dtDailyReport.Columns.Add("Status", GetType(String))]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <Assign DisplayName="Add Processing Time Column" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_AddReportCol5">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="sd:DataColumn">[tmpReportColumn]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="sd:DataColumn">[dtDailyReport.Columns.Add("Processing Time", GetType(String))]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </If.Else>
-            </If>
-            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {invoiceNumber, supplier, amount, If(isDuplicate, &quot;Duplicate&quot;, &quot;Success&quot;), processingTime}]" DataTable="[dtDailyReport]" DisplayName="Add Daily Report Row" sap:VirtualizedContainerService.HintSize="643.2,220" sap2010:WorkflowViewState.IdRef="AddDataRow_DailyReport" />
-            <ui:WriteRange DataTable="[dtDailyReport]" DisplayName="Write Daily Report Sheet" sap:VirtualizedContainerService.HintSize="643.2,278.4" sap2010:WorkflowViewState.IdRef="WriteRange_DailyReport" SheetName="[&quot;Report&quot;]" StartingCell="[&quot;A1&quot;]" WorkbookPath="[dailyReportPath]" />
-            <ui:LogMessage DisplayName="Log Processing Status" sap:VirtualizedContainerService.HintSize="643.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_Success" Level="Info" Message="[If(isDuplicate, &quot;Duplicate handled: &quot; + invoiceNumber, &quot;Validated and exported: &quot; + invoiceNumber)]" />
-          </Sequence>
+          <TryCatch DisplayName="TryCatch Invoice Processing" sap:VirtualizedContainerService.HintSize="678.4,5683.2" sap2010:WorkflowViewState.IdRef="TryCatch_InvoiceProcessing">
+            <TryCatch.Try>
+              <Sequence DisplayName="Process Single Invoice" sap:VirtualizedContainerService.HintSize="676.8,4892.8" sap2010:WorkflowViewState.IdRef="Sequence_ProcessInvoice">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Set Processing Start" sap:VirtualizedContainerService.HintSize="643.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetProcessingStart">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="s:DateTime">[processingStart]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:LogMessage DisplayName="Log Current File" sap:VirtualizedContainerService.HintSize="643.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_CurrentFile" Level="Info" Message="[&quot;Processing: &quot; + currentFile]" />
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Read Invoice" sap:VirtualizedContainerService.HintSize="643.2,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_ReadInvoice" UnSafe="False" WorkflowFileName="ReadInvoice.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[currentFile]</InArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceNumber">[invoiceNumber]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_Supplier">[supplier]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceDate">[invoiceDate]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_Amount">[amount]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_VAT">[vat]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Check Duplicate" sap:VirtualizedContainerService.HintSize="643.2,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_CheckDuplicate" UnSafe="False" WorkflowFileName="Workflows\CheckDuplicate.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[invoiceNumber]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[currentFile]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_ExcelPath">[Path.Combine("Output", "Invoices.xlsx")]</InArgument>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsDuplicate">[isDuplicate]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <If Condition="[Not isDuplicate]" DisplayName="If Not Duplicate" sap:VirtualizedContainerService.HintSize="643.2,1840.8" sap2010:WorkflowViewState.IdRef="If_NotDuplicate">
+                  <If.Then>
+                    <Sequence DisplayName="Process Non-Duplicate" sap:VirtualizedContainerService.HintSize="449.6,1110.4" sap2010:WorkflowViewState.IdRef="Sequence_ProcessNonDuplicate">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Validate Invoice" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_Validate" UnSafe="False" WorkflowFileName="Validation.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[invoiceNumber]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Supplier">[supplier]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceDate">[invoiceDate]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Amount">[amount]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_VAT">[vat]</InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Save Invoice" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_SaveInvoice" UnSafe="False" WorkflowFileName="Workflows\SaveInvoice.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[invoiceNumber]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Supplier">[supplier]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceDate">[invoiceDate]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Amount">[amount]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_VAT">[vat]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Status">["Processed"]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_ExcelPath">[Path.Combine("Output", "Invoices.xlsx")]</InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                      <Assign DisplayName="Build CSV Line" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_BuildCsvLine">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[csvLine]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[String.Join(",", New String() {(ChrW(34) + If(invoiceNumber, String.Empty).Replace(ChrW(34), ChrW(34) + ChrW(34)) + ChrW(34)), (ChrW(34) + If(supplier, String.Empty).Replace(ChrW(34), ChrW(34) + ChrW(34)) + ChrW(34)), (ChrW(34) + If(invoiceDate, String.Empty).Replace(ChrW(34), ChrW(34) + ChrW(34)) + ChrW(34)), (ChrW(34) + If(amount, String.Empty).Replace(ChrW(34), ChrW(34) + ChrW(34)) + ChrW(34)), (ChrW(34) + If(vat, String.Empty).Replace(ChrW(34), ChrW(34) + ChrW(34)) + ChrW(34)), (ChrW(34) + "Validated" + ChrW(34)), (ChrW(34) + Now.ToString("yyyy-MM-dd HH:mm:ss") + ChrW(34))})]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:AppendLine File="{x:Null}" DisplayName="Append CSV Line" Encoding="utf-8" FileName="[csvPath]" sap:VirtualizedContainerService.HintSize="416,166.4" sap2010:WorkflowViewState.IdRef="AppendLine_CsvLine" Text="[csvLine]" UseDefaultEncoding="False" />
+                      <Assign DisplayName="Increment Success Count" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_IncrementSuccessCount">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[successCount]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[successCount + 1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" DisplayName="Move Invoice to Archive" sap:VirtualizedContainerService.HintSize="416,183.2" sap2010:WorkflowViewState.IdRef="MoveFile_1" Path="[currentFile]" Destination="[Path.Combine(&quot;Archive&quot;, Path.GetFileName(currentFile))]" />
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="Handle Duplicate" sap:VirtualizedContainerService.HintSize="449.6,592" sap2010:WorkflowViewState.IdRef="Sequence_HandleDuplicate">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Duplicate Skipped" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_DuplicateSkipped" Level="Warn" Message="[&quot;Duplicate invoice skipped: &quot; + invoiceNumber]" />
+                      <Assign DisplayName="Increment Error Count" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_IncrementErrorCount">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[errorCount]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[errorCount + 1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" DisplayName="Move Duplicate to Exception" sap:VirtualizedContainerService.HintSize="416,183.2" sap2010:WorkflowViewState.IdRef="MoveFile_2" Path="[currentFile]" Destination="[Path.Combine(&quot;Exception&quot;, Path.GetFileName(currentFile))]" />
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <Assign DisplayName="Set Processing Time" sap:VirtualizedContainerService.HintSize="643.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_SetProcessingTime">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[processingTime]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[(Now - processingStart).ToString("hh\:mm\:ss")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[File.Exists(dailyReportPath)]" DisplayName="If DailyReport Exists" sap:VirtualizedContainerService.HintSize="643.2,1452.8" sap2010:WorkflowViewState.IdRef="If_DailyReportExists">
+                  <If.Then>
+                    <ui:ReadRange AddHeaders="True" DataTable="[dtDailyReport]" DisplayName="Read Daily Report Sheet" sap:VirtualizedContainerService.HintSize="449.6,194.4" sap2010:WorkflowViewState.IdRef="ReadRange_DailyReport" Range="[String.Empty]" SheetName="[&quot;Report&quot;]" WorkbookPath="[dailyReportPath]" />
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="Initialize Daily Report Table" sap:VirtualizedContainerService.HintSize="449.6,1097.6" sap2010:WorkflowViewState.IdRef="Sequence_InitDailyReportTable">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Create Daily Report DataTable" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_CreateDailyReportDataTable">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataTable">[dtDailyReport]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataTable">[New DataTable()]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Add Invoice Column" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddReportCol1">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataColumn">[tmpReportColumn]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataColumn">[dtDailyReport.Columns.Add("Invoice", GetType(String))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Add Supplier Column" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddReportCol2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataColumn">[tmpReportColumn]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataColumn">[dtDailyReport.Columns.Add("Supplier", GetType(String))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Add Amount Column" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddReportCol3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataColumn">[tmpReportColumn]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataColumn">[dtDailyReport.Columns.Add("Amount", GetType(String))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Add Status Column" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddReportCol4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataColumn">[tmpReportColumn]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataColumn">[dtDailyReport.Columns.Add("Status", GetType(String))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Add Processing Time Column" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_AddReportCol5">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataColumn">[tmpReportColumn]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataColumn">[dtDailyReport.Columns.Add("Processing Time", GetType(String))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {invoiceNumber, supplier, amount, If(isDuplicate, &quot;Duplicate&quot;, &quot;Success&quot;), processingTime}]" DataTable="[dtDailyReport]" DisplayName="Add Daily Report Row" sap:VirtualizedContainerService.HintSize="643.2,220" sap2010:WorkflowViewState.IdRef="AddDataRow_DailyReport" />
+                <ui:WriteRange DataTable="[dtDailyReport]" DisplayName="Write Daily Report Sheet" sap:VirtualizedContainerService.HintSize="643.2,278.4" sap2010:WorkflowViewState.IdRef="WriteRange_DailyReport" SheetName="[&quot;Report&quot;]" StartingCell="[&quot;A1&quot;]" WorkbookPath="[dailyReportPath]" />
+                <ui:LogMessage DisplayName="Log Processing Status" sap:VirtualizedContainerService.HintSize="643.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_Success" Level="Info" Message="[If(isDuplicate, &quot;Duplicate handled: &quot; + invoiceNumber, &quot;Validated and exported: &quot; + invoiceNumber)]" />
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,350" sap2010:WorkflowViewState.IdRef="Catch_InvoiceProcessingException">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Handle Exception" sap:VirtualizedContainerService.HintSize="676.8,592" sap2010:WorkflowViewState.IdRef="Sequence_HandleException">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Exception" sap:VirtualizedContainerService.HintSize="643.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_Exception" Level="Error" Message="[&quot;Exception processing invoice: &quot; + currentFile + &quot; - &quot; + ex.Message]" />
+                    <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" DisplayName="Move Invoice to Exception Folder" sap:VirtualizedContainerService.HintSize="643.2,192" sap2010:WorkflowViewState.IdRef="MoveFile_3" Path="[currentFile]" Destination="[Path.Combine(&quot;Exception&quot;, Path.GetFileName(currentFile))]" />
+                    <Assign DisplayName="Increment Error Count On Exception" sap:VirtualizedContainerService.HintSize="643.2,165.6" sap2010:WorkflowViewState.IdRef="Assign_IncrementErrorCount_Exception">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[errorCount]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[errorCount + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="True" DisplayName="Send Daily Report Email" sap:VirtualizedContainerService.HintSize="710.4,91.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_SendEmail" UnSafe="False" WorkflowFileName="SendEmail.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="True" DisplayName="Send Daily Report Email" sap:VirtualizedContainerService.HintSize="704,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_SendEmail" UnSafe="False" WorkflowFileName="SendEmail.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_To">[recipientEmail]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ReportPath">[dailyReportPath]</InArgument>
@@ -423,6 +457,6 @@
         <InArgument x:TypeArguments="x:Int32" x:Key="in_ErrorCount">[errorCount]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Process Complete" sap:VirtualizedContainerService.HintSize="710.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_ProcessingComplete" Level="Info" Message="[&quot;Invoice processing finished. CSV output: &quot; + csvPath]" />
+    <ui:LogMessage DisplayName="Log Process Complete" sap:VirtualizedContainerService.HintSize="704,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_ProcessingComplete" Level="Info" Message="[&quot;Invoice processing finished. CSV output: &quot; + csvPath]" />
   </Sequence>
 </Activity>
