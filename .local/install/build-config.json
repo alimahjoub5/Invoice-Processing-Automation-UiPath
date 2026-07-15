@@ -1,0 +1,12 @@
+{
+  "Version": "1.0",
+  "IncludeWorkflows": [
+    "Main.xaml",
+    "GetFiles.xaml",
+    "ReadInvoice.xaml",
+    "Workflows/CheckDuplicate.xaml",
+    "Validation.xaml",
+    "Workflows/SaveInvoice.xaml",
+    "SendEmail.xaml"
+  ]
+}

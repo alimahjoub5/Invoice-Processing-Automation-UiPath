@@ -1,0 +1,222 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SaveInvoice" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_InvoiceNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_Supplier" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceDate" Type="InArgument(x:String)" />
+    <x:Property Name="in_Amount" Type="InArgument(x:String)" />
+    <x:Property Name="in_VAT" Type="InArgument(x:String)" />
+    <x:Property Name="in_Status" Type="InArgument(x:String)" />
+    <x:Property Name="in_ExcelPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>SaveInvoice_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Save Invoice" sap:VirtualizedContainerService.HintSize="802.8000000000001,1556" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="excelPath" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtInvoices" />
+      <Variable x:TypeArguments="sd:DataColumn" Name="tmpColumn" />
+      <Variable x:TypeArguments="x:String" Name="statusValue" />
+      <Variable x:TypeArguments="x:String" Name="processDate" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Resolve Excel Path" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[excelPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(String.IsNullOrWhiteSpace(in_ExcelPath), Path.Combine("Output", "Invoices.xlsx"), in_ExcelPath)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Set Status" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[statusValue]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(String.IsNullOrWhiteSpace(in_Status), "Processed", in_Status)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Set Process Date" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[processDate]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Now.ToString("dd/MM/yyyy")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[File.Exists(excelPath)]" DisplayName="If Invoices.xlsx Exists" sap:VirtualizedContainerService.HintSize="449.6,520" sap2010:WorkflowViewState.IdRef="If_ExcelExists">
+      <If.Then>
+        <ui:ReadRange AddHeaders="True" DataTable="[dtInvoices]" DisplayName="Read Invoices Sheet" sap:VirtualizedContainerService.HintSize="334.4,194.4" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="[String.Empty]" SheetName="[&quot;Invoices&quot;]" WorkbookPath="[excelPath]" />
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Initialize Invoices Table" sap:VirtualizedContainerService.HintSize="334.4,1077.6" sap2010:WorkflowViewState.IdRef="Sequence_InitInvoicesTable">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="Create DataTable" sap:VirtualizedContainerService.HintSize="300.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_InitInvoicesTable">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[dtInvoices]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[New DataTable()]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Add InvoiceNumber Column" sap:VirtualizedContainerService.HintSize="300.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddCol1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataColumn">[tmpColumn]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataColumn">[dtInvoices.Columns.Add(&quot;InvoiceNumber&quot;, GetType(String))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Add Supplier Column" sap:VirtualizedContainerService.HintSize="300.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddCol2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataColumn">[tmpColumn]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataColumn">[dtInvoices.Columns.Add(&quot;Supplier&quot;, GetType(String))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Add InvoiceDate Column" sap:VirtualizedContainerService.HintSize="300.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddCol3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataColumn">[tmpColumn]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataColumn">[dtInvoices.Columns.Add(&quot;InvoiceDate&quot;, GetType(String))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Add Amount Column" sap:VirtualizedContainerService.HintSize="300.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddCol4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataColumn">[tmpColumn]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataColumn">[dtInvoices.Columns.Add(&quot;Amount&quot;, GetType(String))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Add VAT Column" sap:VirtualizedContainerService.HintSize="300.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddCol5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataColumn">[tmpColumn]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataColumn">[dtInvoices.Columns.Add(&quot;VAT&quot;, GetType(String))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Add Status Column" sap:VirtualizedContainerService.HintSize="300.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddCol6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataColumn">[tmpColumn]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataColumn">[dtInvoices.Columns.Add(&quot;Status&quot;, GetType(String))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Add ProcessDate Column" sap:VirtualizedContainerService.HintSize="300.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_AddCol7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataColumn">[tmpColumn]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataColumn">[dtInvoices.Columns.Add(&quot;ProcessDate&quot;, GetType(String))]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {in_InvoiceNumber, in_Supplier, in_InvoiceDate, in_Amount, in_VAT, statusValue, processDate}]" DataTable="[dtInvoices]" DisplayName="Add Invoice Row" sap:VirtualizedContainerService.HintSize="449.6,220" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+    <ui:WriteRange AddHeaders="True" DataTable="[dtInvoices]" DisplayName="Write Invoices Sheet" sap:VirtualizedContainerService.HintSize="449.6,269.6" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[&quot;Invoices&quot;]" StartingCell="[&quot;A1&quot;]" WorkbookPath="[excelPath]" />
+  </Sequence>
+</Activity>
